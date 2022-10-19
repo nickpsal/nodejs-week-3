@@ -1,17 +1,40 @@
 import { Sequelize, DataTypes } from "sequelize";
 
-const sequelize = new Sequelize({
-    host: 'localhost',
-    port: 5432,
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialect: 'postgres',
-    username: 'postgres',
-    password:'ospzx3vu',
-    database: 'myBooks',
-    logging: false,
-    define: {
-        timestamps: false
-    },
-});
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false
+        },
+        logging: false,
+        define: {
+            timestamps: false
+        }
+    }
+);
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
+
+// const sequelize = new Sequelize({
+//     host: 'localhost',
+//     port: 5432,
+//     dialect: 'postgres',
+//     username: 'postgres',
+//     password:'ospzx3vu',
+//     database: 'myBooks',
+//     logging: false,
+//     define: {
+//         timestamps: false
+//     },
+// });
 
 //define model
 const Book = sequelize.define(
