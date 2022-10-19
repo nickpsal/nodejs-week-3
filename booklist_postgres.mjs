@@ -1,5 +1,6 @@
 import { Sequelize, DataTypes } from "sequelize";
 
+// only for heroku
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialect: 'postgres',
     dialectOptions: {
@@ -14,7 +15,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
     }
     }
 );
-
+//only for heroku
 sequelize
   .authenticate()
   .then(() => {
@@ -24,6 +25,7 @@ sequelize
     console.error('Unable to connect to the database:', err);
   });
 
+//local only
 // const sequelize = new Sequelize({
 //     host: 'localhost',
 //     port: 5432,
