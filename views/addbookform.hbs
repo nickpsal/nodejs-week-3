@@ -1,0 +1,37 @@
+<form action="/addbook" method="post" class="myform">
+    <div class="container">
+        <div class="col-mb-3">
+            <div class="col" >
+                <h2>Εισάγετε ένα Βιβλίο</h2>
+            </div>
+        </div>
+        <fieldset class="border p-2 mb-3">
+            <legend class="m-auto">Στοιχεία Βιβλίου</legend>
+            <div class="row mb-3">
+                <div class="col-md-2 col-sm-12 justify-content-end d-flex">
+                    <label for="newBookTitle" class="col-form-label">Τίτλος</label>
+                </div>
+                <div class="col-md-10 col-sm-10">
+                    <input type="text" class="form-control {{#if mess.newBookTitle}} is-invalid {{/if}}" id="newBookTitle" name="newBookTitle" value="{{title}}" placeholder="Γράψτε τον τίτλτο" required>
+                    <div class="valid-feedback">OK</div>
+                    <div class="invalid-feedback">{{mess.newBookTitle.msg}}</div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-2 col-sm-12 justify-content-end d-flex">
+                    <label for="newBookTitle" class="col-form-label">Συγγραφέας</label>
+                </div>
+                <div class="col-md-10 col-sm-10 position-relative">
+                    <input type="text" class="form-control" id="newBookAuthor" name="newBookAuthor" value="{{author}}" placeholder="Γράψτε τον Συγγραφέα" required>
+                    <div class="valid-feedback">OK</div>
+                    <div class="invalid-feedback">Τό πεδίο είναι υποχρεωτικό</div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="row mb-3">
+            <div class="col">
+                <button type="submit" class="btn btn-primary mb3">Υποβολή</button>
+            </div>
+        </div>
+    </div>
+</form>
