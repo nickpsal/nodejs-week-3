@@ -5,7 +5,7 @@ import createMemoryStore from 'memorystore'
 import { engine } from 'express-handlebars'
 import { router } from "./routes.mjs"
 
-const app = new express()
+const app = express()
 const memorystore = createMemoryStore(session)
 const myBooksSession = session({
     secret: process.env.SESSION_SECRET,
